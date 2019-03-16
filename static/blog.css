@@ -1,0 +1,80 @@
+section,header,footer {
+ margin: 0 10px;
+ padding: 10px;
+}
+
+li {
+ list-style-type: none;
+}
+
+input {
+ margin: 1px;
+}
+
+header,footer {
+ background: #cdd0f2;
+}
+
+.nav-header {
+ font-size: 20px;
+ display: grid;
+ grid-template-columns: 2fr 5fr;
+}
+
+.nav,.contact-form div,.project div,.project img,.contact-details label,.contact-details input {
+ grid-column: span 1;
+}
+
+section{
+ background: #e0d7d7;
+}
+
+article h3{
+ color:green;
+}
+
+body{
+ font-family: 'Allerta', sans-serif;
+ margin: 0;
+}
+
+.nickname {
+ display: inline-block;
+}
+
+ul {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-content: center;
+ margin: 1em 0;
+ padding: 0;
+ height: 100%;
+}
+
+.contact-form,.project {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+
+.contact-details {
+ display: grid;
+ grid-template-columns: 1fr 3fr;
+ margin-bottom: 5em;
+}
+
+.contact-text {
+ display: flex;
+ flex-direction: column;
+ align-content: space-around;
+ justify-content: center;
+ padding: 0 20px;
+}
+
+.contact {
+ border-bottom: solid black 1px;
+ margin-bottom: 20px;
+ padding-bottom: 10px;
+ display: flex;
+ justify-content: space-around;
+}

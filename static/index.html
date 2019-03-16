@@ -1,0 +1,141 @@
+<html>
+<head>
+ <title>portfolio | Josh Parker</title>
+ <meta charset="utf-8"/>
+ <link href="https://fonts.googleapis.com/css?family=Allerta:400,700" rel="stylesheet">
+ <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+ <header id="nav-header" class="nav-header">
+  <p class="nickname nav">Josh Parker</p>    
+  <nav class="menu nav">
+   <ul>
+    <li><a href="index.html">Josh Parker</a></li>
+    <li><a href="index.html#projects">Portfolio</a></li>
+    <li><a href="https://github.com/joshparkerj/">Github</a></li>
+    <li><a href="#contact">Contact</a></li>
+   </ul>
+  </nav>
+ </header>
+ <section id="page-header" class="page-header background">
+  <div class="container">
+   <div class="josh-parker">
+    <h1>Josh Parker</h1>
+    <h3>SPA Web Developer</h3>
+    <a href="#projects">Learn More</a>       
+   </div>
+  </div>
+ </section>  
+ <section id="projects" class="projects container"></section>
+<footer id="contact" class="footer">
+ <div class="container">
+  <div class="contact">
+   <a href="tel:3852085194"><strong>Phone:</strong><span>(385) 208 - 5194</span></a>
+   <a href="mailto:joshparkerjo@gmail.com"><strong>E-mail:</strong><span>joshparkerjo@gmail.com</span></a>
+  </div>
+  <form id="contact-form" class="contact-form" action="/contact-submit" method="post">
+   <div class="contact-details">
+    <label for="contact-name">Name:</label>
+    <input type="text" required id="contact-name" name="contact-name"/>
+    <label for="contact-email">E-mail:</label>
+    <input type="email" required id="contact-email" name="contact-email"/>
+   </div>
+   <div class="contact-text">
+    <label for="contact-message">Message:</label>
+    <textarea name="contact-message" id="contact-message" cols="30" rows="7" value=""></textarea>
+    <input id="contact-button" type="submit" class="button"/>
+   </div>
+  </form>
+ </div>
+</footer>
+<script>
+ [
+  {
+   name: 'Scheduler App: Monday.com Clone',
+   description: 'describe',
+   img: '/monday-thumb-1.png'
+  },
+  {
+   name: 'Wikipedia Based Multiplayer Quiz App: joshquizzes.com',
+   description: 'describe',
+   img: '/quiz-thumb-1.png'
+  },
+  {
+   name: 'Calendar App',
+   description: 'describe',
+   img: '/calendar-thumb-1.png'
+  },
+  {
+   name: 'Simulated Computer created with C++ Qt',
+   description: 'describe',
+   img: '/qt-thumb-1.png'
+  },
+  {
+   name: 'FFT Script Collection',
+   description: 'describe',
+   img: '/fft-thumb-1.png'
+  },
+  {
+   name: 'Python Game Tutorial',
+   description: 'describe',
+   img: '/si-thumb-1.png'
+  }
+ ].forEach(project => {
+  const a = document.createElement('article');
+  const b = document.createElement('div');
+  const c = document.createElement('h3');
+  const d = document.createElement('p');
+  const e = document.createElement('img');
+  a.setAttribute('class','project');
+  document.querySelector('#projects').appendChild(a);
+  b.setAttribute('class','description');
+  a.appendChild(b);
+  c.innerText = project.name;
+  b.appendChild(c);
+  d.innerText = project.description;
+  b.appendChild(d);
+  e.setAttribute('src',project.img);
+  e.setAttribute('alt',project.name);
+  a.appendChild(e);
+ });
+ 
+ document.querySelector('#contact-form').onsubmit = function() {
+  event.preventDefault();
+  const n = document.querySelector('#contact-name');
+  const e = document.querySelector('#contact-email');
+  const m = document.querySelector('#contact-message');
+  const b = document.querySelector('#contact-button');
+  console.log(n.value);
+  const JSONBody = {
+   name: n.value,
+   email: e.value,
+   message: m.value
+  };
+  console.log(JSONBody);
+  const stringifiedJSONBody = JSON.stringify(JSONBody);
+  console.log(stringifiedJSONBody);
+  n.value = 'Please wait...';
+  n.setAttribute('disabled',true);
+  e.value = 'Please wait...';
+  e.setAttribute('disabled',true);
+  m.value = 'Please wait...';
+  m.setAttribute('disabled',true);
+  b.setAttribute('disabled',true);
+  fetch('/contact-submit',{
+   method: 'POST',
+   headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+   },
+   body: stringifiedJSONBody
+  })
+   .then(response => {
+    if (response.status == 201) m.value = 'Your submission has been saved!';
+	else m.value = 'Something went wrong...';
+    n.value = '';
+	e.value = '';
+   })
+ };
+</script>
+</body>
+</html>
