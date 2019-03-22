@@ -7,6 +7,10 @@ li {
  list-style-type: none;
 }
 
+p {
+ margin-right: 2em;
+}
+
 input {
  margin: 1px;
 }
@@ -55,6 +59,10 @@ ul {
 .contact-form,.project {
  display: grid;
  grid-template-columns: 1fr 1fr;
+}
+
+.project {
+ margin: 2em 0;
 }
 
 .contact-details {

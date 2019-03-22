@@ -13,6 +13,7 @@
     <li><a href="index.html">Josh Parker</a></li>
     <li><a href="index.html#projects">Portfolio</a></li>
     <li><a href="https://github.com/joshparkerj/">Github</a></li>
+    <li><a href="/josh-parker.pdf">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
    </ul>
   </nav>
@@ -52,33 +53,39 @@
  [
   {
    name: 'Scheduler App: Monday.com Clone',
-   description: 'describe',
-   img: '/monday-thumb-1.png'
+   description: 'This was the final group project that my cohort completed at DevMountain. It is a clone of the project management/team task scheduler app Monday.com. My part in the project was to design the database and set up all of the API endpoints to properly interact with the Database. I used the PostgreSQL Relational Database Management System for this task. I also used Node.js for the http server, with the Express.js and Massive.js libraries. The database ended up with 12 tables. In order to test the functionality of my server endpoints, I used a Postman test collection containing over 600 test assertions. The end result is a database and server that shows content only to approved members of a team, and only the owners of tasks, boards, and teams are able to edit their content. Any user can create a team, board, or task. There are also comments and direct messages. If you\'d like to see what the app can do, please try logging in as user: Starburst, password: 8.',
+   img: '/monday-thumb-1.png',
+   link: 'http://monday.joshquizzes.com'
   },
   {
    name: 'Wikipedia Based Multiplayer Quiz App: joshquizzes.com',
-   description: 'describe',
-   img: '/quiz-thumb-1.png'
+   description: 'This was my main personal project during my time at DevMountain. The purpose of this app is to allow people to play multiplayer quiz games. In order to provide a satisfactory number of quiz questions, I decided to scrape Wikipedia. Here\'s how it works: When an admin inputs a wikipedia category to be scraped, the web server visits the category page, then visits all of the pages that are linked to on that page. It grabs the first paragraph of the article and the article image url, if there is one. A regular expression is used to try to blank out the name of the article wherever it appears. In order to parse the wikipedia pages, I used the Cheerio library, which is an implementation of jQuery for Node.js. When a user creates a new game, they have to pick a category. Then, the answers are shown as the paragraphs from the articles. The correct article title is shown on a button, along with three random wrong titles from the category. In order to implement the real-time multiplayer functionality, I used the Socket.IO library.',
+   img: '/quiz-thumb-1.png',
+   link: 'https://joshquizzes.com'
   },
   {
    name: 'Calendar App',
-   description: 'describe',
-   img: '/calendar-thumb-1.png'
+   description: 'This was the first main project I tackled at DevMountain. It is a simple calendar app that allows you to record appointment times. It saves all appointments to a json file in the file system.',
+   img: '/calendar-thumb-1.png',
+   link: 'http://calendar.joshquizzes.com'
   },
   {
    name: 'Simulated Computer created with C++ Qt',
-   description: 'describe',
-   img: '/qt-thumb-1.png'
+   description: 'This is a group project that I am currently working on as a Software Engineering student at UVU. The purpose of the project is to simulate a simple computer. In this iteration of the project, the simulated machine has 100 memory addresses available. Programs can be written in a basic machine language with 4 digit decimal words. My role in the project has been to create the Graphic User Interface. I chose to use the Qt framework for this task.',
+   img: '/qt-thumb-1.png',
+   link: 'http://qt.joshquizzes.com'
   },
   {
    name: 'FFT Script Collection',
-   description: 'describe',
-   img: '/fft-thumb-1.png'
+   description: 'This is my part in a collaborative project that I worked on for my Algorithms class in Fall 2018. I created a collection of scripts using Python, Node.js, and windows batch scripting. The purpose of the project was to demonstrate applications of the Cooley-Tukey Fast Fourier Transform algorithm.',
+   img: '/fft-thumb-1.png',
+   link: 'http://fft.joshquizzes.com'
   },
   {
    name: 'Python Game Tutorial',
-   description: 'describe',
-   img: '/si-thumb-1.png'
+   description: 'This is a lesson plan I created for UVU Prep, a teen pre-engineering summer camp. The purpose of this lesson plan was to help kids get started creating games and multimedia apps using Python. The intended audience is kids who know MIT Scratch and who have recently started studying Python. I implemented a space invaders game as a demonstration.',
+   img: '/si-thumb-1.png',
+   link: 'http://si.joshquizzes.com'
   }
  ].forEach(project => {
   const a = document.createElement('article');
@@ -86,12 +93,15 @@
   const c = document.createElement('h3');
   const d = document.createElement('p');
   const e = document.createElement('img');
+  const f = document.createElement('a');
   a.setAttribute('class','project');
   document.querySelector('#projects').appendChild(a);
   b.setAttribute('class','description');
   a.appendChild(b);
+  f.setAttribute('href',project.link);
+  b.appendChild(f);
   c.innerText = project.name;
-  b.appendChild(c);
+  f.appendChild(c);
   d.innerText = project.description;
   b.appendChild(d);
   e.setAttribute('src',project.img);
@@ -107,9 +117,9 @@
   const b = document.querySelector('#contact-button');
   console.log(n.value);
   const JSONBody = {
-   name: n.value,
-   email: e.value,
-   message: m.value
+   name: n.value.replace(/[^a-z0-9]/gi,' ').slice(0,1000),
+   email: e.value.replace(/[^a-z0-9]/gi,' ').slice(0,1000),
+   message: m.value.replace(/[^a-z0-9]/gi,' ').slice(0,1000)
   };
   console.log(JSONBody);
   const stringifiedJSONBody = JSON.stringify(JSONBody);
