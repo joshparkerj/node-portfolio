@@ -13,6 +13,7 @@
     <li><a href="index.html">Josh Parker</a></li>
     <li><a href="index.html#projects">Portfolio</a></li>
     <li><a href="https://github.com/joshparkerj/">Github</a></li>
+    <li><a href="https://www.linkedin.com/in/joshnparker/">LinkedIn</a></li>
     <li><a href="/josh-parker.pdf">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
    </ul>
@@ -61,7 +62,7 @@
    name: 'Wikipedia Based Multiplayer Quiz App: joshquizzes.com',
    description: 'This was my main personal project during my time at DevMountain. The purpose of this app is to allow people to play multiplayer quiz games. In order to provide a satisfactory number of quiz questions, I decided to scrape Wikipedia. Here\'s how it works: When an admin inputs a wikipedia category to be scraped, the web server visits the category page, then visits all of the pages that are linked to on that page. It grabs the first paragraph of the article and the article image url, if there is one. A regular expression is used to try to blank out the name of the article wherever it appears. In order to parse the wikipedia pages, I used the Cheerio library, which is an implementation of jQuery for Node.js. When a user creates a new game, they have to pick a category. Then, the answers are shown as the paragraphs from the articles. The correct article title is shown on a button, along with three random wrong titles from the category. In order to implement the real-time multiplayer functionality, I used the Socket.IO library.',
    img: '/quiz-thumb-1.png',
-   link: 'https://joshquizzes.com'
+   link: 'https://quiz.joshquizzes.com'
   },
   {
    name: 'Calendar App',
